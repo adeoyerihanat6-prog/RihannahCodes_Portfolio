@@ -1,10 +1,10 @@
-import techcon1 from "../assets/techcon1.jpeg";
-import rhivelle1 from "../assets/rhivelle1.jpeg";
-import editor from "../assets/editor.png";
-import quiz from "../assets/quizappscreenshot.png";
-import quote from "../assets/quote.png";
-import decode from "../assets/decode.png";
-import vel from "../assets/vel.png";
+import techcon1 from "../assets/projects/techcon1.jpeg";
+import rhivelle1 from "../assets/projects/rhivelle1.jpeg";
+import editor from "../assets/projects/editor.png";
+import quiz from "../assets/projects/quizappscreenshot.png";
+import quote from "../assets/projects/quote.png";
+import decode from "../assets/projects/decode.png";
+import vel from "../assets/projects/vel.png";
 
 const PROJECTS_DATA = [
   {
