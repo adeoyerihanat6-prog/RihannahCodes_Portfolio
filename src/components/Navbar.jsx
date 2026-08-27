@@ -1,12 +1,33 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import {
+  ArrowUpRight,
+  BriefcaseBusiness,
+  CircleUserRound,
+  Mail,
+  Menu,
+  X,
+} from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 
+import rcLogo from "../assets/branding/rc-logo.png";
+
 const navLinks = [
-  { label: "Work", path: "/#work" },
-  { label: "About", path: "/#about" },
-  { label: "Contact", path: "/#contact" },
+  {
+    label: "Work",
+    path: "/#work",
+    icon: BriefcaseBusiness,
+  },
+  {
+    label: "About",
+    path: "/#about",
+    icon: CircleUserRound,
+  },
+  {
+    label: "Contact",
+    path: "/#contact",
+    icon: Mail,
+  },
 ];
 
 function Navbar() {
@@ -31,55 +52,73 @@ function Navbar() {
     };
   }, [menuOpen]);
 
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
+
   return (
     <>
+      {/* Navbar */}
       <motion.header
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        className="fixed inset-x-0 top-0 z-50 px-5 py-5 md:px-8"
+        transition={{
+          duration: 0.7,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+        className="fixed inset-x-0 top-0 z-50 px-5 py-5 sm:px-7 lg:px-10"
       >
         <motion.nav
           animate={{
-            maxWidth: scrolled ? "980px" : "1200px",
+            maxWidth: scrolled ? "960px" : "1280px",
           }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
-          className={`mx-auto flex items-center justify-between px-1 transition-all duration-400 ${
+          transition={{
+            duration: 0.45,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          className={`mx-auto flex items-center justify-between transition-all duration-300 ${
             scrolled
-              ? "rounded-sm border border-[var(--border)] bg-[var(--surface)]/85 px-4 py-3 backdrop-blur-md md:px-5"
-              : "py-1"
+              ? "rounded-md border border-[var(--border)] bg-[var(--surface)]/90 px-4 py-3 shadow-lg shadow-black/10 backdrop-blur-xl sm:px-5"
+              : "px-1 py-2"
           }`}
         >
           {/* Logo */}
           <NavLink
             to="/"
             aria-label="RihannahCodes home"
-            className="relative z-10 flex items-center"
+            className="relative z-10 flex shrink-0 items-center"
           >
             <img
-              src="/src/assets/branding/rc-logo.png"
-              alt="RC"
-              className="h-8 w-auto"
+              src={rcLogo}
+              alt="RihannahCodes"
+              className="h-10 w-auto object-contain sm:h-11"
             />
           </NavLink>
 
           {/* Desktop navigation */}
-          <div className="hidden items-center gap-8 md:flex">
-            {navLinks.map((link) => (
-              <NavLink
-                key={link.label}
-                to={link.path}
-                className="text-sm font-medium text-[var(--muted)] transition-colors duration-300 hover:text-[var(--foreground)]"
-              >
-                {link.label}
-              </NavLink>
-            ))}
+          <div className="hidden items-center md:flex">
+            <div className="flex items-center gap-7 lg:gap-9">
+              {navLinks.map((link) => (
+                <NavLink
+                  key={link.label}
+                  to={link.path}
+                  className="group relative py-2 text-sm font-medium text-[var(--muted)] transition-colors duration-300 hover:text-[var(--foreground)]"
+                >
+                  {link.label}
+
+                  <span className="absolute bottom-0 left-0 h-px w-0 bg-[var(--accent)] transition-all duration-300 group-hover:w-full" />
+                </NavLink>
+              ))}
+            </div>
+
+            <div className="ml-9 h-5 w-px bg-[var(--border)]" />
 
             <a
               href="#contact"
-              className="group flex items-center gap-1.5 text-sm font-medium text-[var(--foreground)]"
+              className="group ml-7 flex items-center gap-1.5 text-sm font-medium text-[var(--foreground)] transition-colors duration-300 hover:text-[var(--accent-light)]"
             >
               Let's talk
+
               <ArrowUpRight
                 size={15}
                 strokeWidth={1.8}
@@ -91,59 +130,135 @@ function Navbar() {
           {/* Mobile menu button */}
           <button
             type="button"
-            onClick={() => setMenuOpen((prev) => !prev)}
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            onClick={() => setMenuOpen(true)}
+            aria-label="Open navigation menu"
             aria-expanded={menuOpen}
             className="relative z-10 flex h-10 w-10 items-center justify-center text-[var(--foreground)] md:hidden"
           >
-            {menuOpen ? <X size={22} /> : <Menu size={22} />}
+            <Menu size={22} strokeWidth={1.7} />
           </button>
         </motion.nav>
       </motion.header>
 
-      {/* Mobile navigation */}
+      {/* Mobile side navigation */}
       <AnimatePresence>
         {menuOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-40 bg-[var(--background)] md:hidden"
-          >
-            <motion.div
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: 20, opacity: 0 }}
-              transition={{ delay: 0.05 }}
-              className="flex h-full flex-col justify-center px-8"
-            >
-              <p className="mb-8 text-xs uppercase tracking-[0.2em] text-[var(--muted)]">
-                Navigation
-              </p>
+          <>
+            {/* Backdrop */}
+            <motion.button
+              type="button"
+              aria-label="Close navigation menu"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              onClick={closeMenu}
+              className="fixed inset-0 z-[60] bg-black/40 backdrop-blur-sm md:hidden"
+            />
 
-              <div className="flex flex-col">
-                {navLinks.map((link, index) => (
-                  <motion.div
-                    key={link.label}
-                    initial={{ y: 20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{
-                      delay: 0.1 + index * 0.08,
-                      duration: 0.4,
-                    }}
-                  >
-                    <NavLink
-                      to={link.path}
-                      onClick={() => setMenuOpen(false)}
-                      className="block border-b border-[var(--border)] py-5 font-serif text-4xl text-[var(--foreground)]"
-                    >
-                      {link.label}
-                    </NavLink>
-                  </motion.div>
-                ))}
+            {/* Side panel */}
+            <motion.aside
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{
+                duration: 0.45,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className="fixed right-0 top-0 z-[70] flex h-dvh w-[88%] max-w-sm flex-col border-l border-[var(--border)] bg-[var(--surface)] px-6 py-6 md:hidden"
+            >
+              {/* Panel header */}
+              <div className="flex items-center justify-between">
+                <NavLink
+                  to="/"
+                  onClick={closeMenu}
+                  aria-label="RihannahCodes home"
+                >
+                  <img
+                    src={rcLogo}
+                    alt="RihannahCodes"
+                    className="h-10 w-auto object-contain"
+                  />
+                </NavLink>
+
+                <button
+                  type="button"
+                  onClick={closeMenu}
+                  aria-label="Close navigation menu"
+                  className="flex h-10 w-10 items-center justify-center border border-[var(--border)] text-[var(--foreground)] transition-colors duration-300 hover:bg-[var(--background)]"
+                >
+                  <X size={19} strokeWidth={1.7} />
+                </button>
               </div>
-            </motion.div>
-          </motion.div>
+
+              {/* Navigation */}
+              <div className="mt-20">
+                <p className="mb-6 text-[10px] font-semibold uppercase tracking-[0.25em] text-[var(--muted)]">
+                  Navigation
+                </p>
+
+                <div className="flex flex-col">
+                  {navLinks.map((link, index) => {
+                    const Icon = link.icon;
+
+                    return (
+                      <motion.div
+                        key={link.label}
+                        initial={{ opacity: 0, x: 25 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{
+                          delay: 0.15 + index * 0.1,
+                          duration: 0.4,
+                          ease: [0.22, 1, 0.36, 1],
+                        }}
+                      >
+                        <NavLink
+                          to={link.path}
+                          onClick={closeMenu}
+                          className="group flex items-center justify-between border-b border-[var(--border)] py-5"
+                        >
+                          <span className="flex items-center gap-4">
+                            <Icon
+                              size={19}
+                              strokeWidth={1.5}
+                              className="text-[var(--muted)] transition-colors duration-300 group-hover:text-[var(--accent)]"
+                            />
+
+                            <span className="font-serif text-3xl text-[var(--foreground)]">
+                              {link.label}
+                            </span>
+                          </span>
+
+                          <ArrowUpRight
+                            size={18}
+                            strokeWidth={1.6}
+                            className="text-[var(--muted)] transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[var(--accent)]"
+                          />
+                        </NavLink>
+                      </motion.div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Mobile CTA */}
+              <motion.a
+                href="#contact"
+                onClick={closeMenu}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  delay: 0.5,
+                  duration: 0.4,
+                }}
+                className="mt-auto flex items-center justify-between border border-[var(--border)] px-5 py-4 text-sm font-medium text-[var(--foreground)] transition-colors duration-300 hover:border-[var(--accent)] hover:bg-[var(--background)]"
+              >
+                Let's talk
+
+                <ArrowUpRight size={17} strokeWidth={1.7} />
+              </motion.a>
+            </motion.aside>
+          </>
         )}
       </AnimatePresence>
     </>
