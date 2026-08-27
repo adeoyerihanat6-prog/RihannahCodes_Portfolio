@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap");
+
+@import "tailwindcss";
+
+:root {
+  --background: #121210;
+  --surface: #1b1a17;
+
+  --foreground: #f3efe7;
+  --muted: #9d9991;
+
+  --border: #302e2a;
+
+  --accent: #747a45;
+  --accent-light: #8a9055;
+
+  --font-sans: "Manrope", sans-serif;
+  --font-serif: "DM Serif Display", serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+
+  background: var(--background);
+  color: var(--foreground);
+
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--foreground);
+}
