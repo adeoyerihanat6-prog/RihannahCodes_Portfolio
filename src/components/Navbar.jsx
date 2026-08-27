@@ -57,7 +57,7 @@ function Navbar() {
             className="relative z-10 flex items-center"
           >
             <img
-              src="/src/assets/branding/rc-logo.svg"
+              src="/src/assets/branding/rc-logo.png"
               alt="RC"
               className="h-8 w-auto"
             />
