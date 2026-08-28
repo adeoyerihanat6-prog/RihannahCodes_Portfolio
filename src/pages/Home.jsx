@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import Work from "../components/Work";
+import AboutPreview from "../components/AboutPreview";
 
 function Home() {
   return (
@@ -89,6 +90,7 @@ function Home() {
         </div>
       </section>
       <Work/>
+      <AboutPreview/>
     </main>
   );
 }
