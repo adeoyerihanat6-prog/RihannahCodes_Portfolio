@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import { ArrowDown, ArrowUpRight, Sparkles, Terminal } from "lucide-react";
 import Work from "../components/Work";
 import AboutPreview from "../components/AboutPreview";
+import BeyondCode from "../components/BeyondCode";
+import Contact from "../components/Contact";
 
 function Home() {
   return (
@@ -104,6 +106,8 @@ function Home() {
 
       <Work />
       <AboutPreview />
+      <BeyondCode/>
+      <Contact/>
     </main>
   );
 }
