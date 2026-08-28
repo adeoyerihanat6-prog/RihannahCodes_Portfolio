@@ -1,7 +1,6 @@
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Mail, Github, Linkedin } from "lucide-react";
-import { FaWhatsapp, FaXTwitter } from "react-icons/fa6";
+import { ArrowUpRight, Mail, MessageCircle } from "lucide-react";
 import emailjs from "@emailjs/browser";
 
 const CONTACT_HANDLES = [
@@ -17,28 +16,28 @@ const CONTACT_HANDLES = [
     label: "WhatsApp",
     value: "Chat with me",
     href: "https://wa.me/2349015162388",
-    icon: FaWhatsapp,
+    icon: MessageCircle,
   },
   {
     id: "github",
     label: "GitHub",
     value: "adeoyerihanat6-prog",
     href: "https://github.com/adeoyerihanat6-prog",
-    icon: Github,
+    icon: null,
   },
   {
     id: "linkedin",
     label: "LinkedIn",
     value: "Rihanat Adeoye",
     href: "https://www.linkedin.com/in/rihanat-adeoye-2a5059395",
-    icon: Linkedin,
+    icon: null,
   },
   {
     id: "twitter",
     label: "X / Twitter",
-    value: "@riha66076",
-    href: "https://x.com/riha66076",
-    icon: FaXTwitter,
+    value: "@RihannahCodes",
+    href: "https://x.com/RihannahCodes",
+    icon: null,
   },
 ];
 
@@ -117,31 +116,24 @@ function Contact() {
                 Find me online
               </p>
 
-              <div className="flex flex-wrap gap-x-6 gap-y-4">
-                {CONTACT_HANDLES.slice(1).map((handle) => {
-                  const Icon = handle.icon;
+              <div className="flex flex-wrap gap-x-7 gap-y-4">
+                {CONTACT_HANDLES.slice(1).map((handle) => (
+                  <a
+                    key={handle.id}
+                    href={handle.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="group flex items-center gap-1.5 text-sm text-[var(--muted)] transition-colors duration-300 hover:text-[var(--foreground)]"
+                  >
+                    <span>{handle.label}</span>
 
-                  return (
-                    <a
-                      key={handle.id}
-                      href={handle.href}
-                      target="_blank"
-                      rel="noreferrer"
-                      aria-label={handle.label}
-                      className="group flex items-center gap-2 text-sm text-[var(--muted)] transition-colors duration-300 hover:text-[var(--foreground)]"
-                    >
-                      <Icon size={15} strokeWidth={1.7} />
-
-                      <span>{handle.label}</span>
-
-                      <ArrowUpRight
-                        size={13}
-                        strokeWidth={1.7}
-                        className="opacity-0 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:opacity-100"
-                      />
-                    </a>
-                  );
-                })}
+                    <ArrowUpRight
+                      size={13}
+                      strokeWidth={1.7}
+                      className="opacity-0 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:opacity-100"
+                    />
+                  </a>
+                ))}
               </div>
             </div>
           </div>
@@ -173,7 +165,7 @@ function Contact() {
                     name="from_name"
                     required
                     placeholder="Your name"
-                    className="w-full border-b border-[var(--border)] bg-transparent px-0 py-3 text-sm text-[var(--foreground)] outline-none transition-colors duration-300 placeholder:text-[var(--muted)] focus:border-[var(--accent)]"
+                    className="w-full border-b border-[var(--border)] bg-transparent px-0 py-3 text-sm text-[var(--foreground)] outline-none placeholder:text-[var(--muted)] focus:border-[var(--accent)]"
                   />
                 </div>
 
@@ -191,7 +183,7 @@ function Contact() {
                     name="reply_to"
                     required
                     placeholder="you@example.com"
-                    className="w-full border-b border-[var(--border)] bg-transparent px-0 py-3 text-sm text-[var(--foreground)] outline-none transition-colors duration-300 placeholder:text-[var(--muted)] focus:border-[var(--accent)]"
+                    className="w-full border-b border-[var(--border)] bg-transparent px-0 py-3 text-sm text-[var(--foreground)] outline-none placeholder:text-[var(--muted)] focus:border-[var(--accent)]"
                   />
                 </div>
 
@@ -209,7 +201,7 @@ function Contact() {
                     rows="5"
                     required
                     placeholder="Tell me a little about what you're building..."
-                    className="w-full resize-none border-b border-[var(--border)] bg-transparent px-0 py-3 text-sm leading-6 text-[var(--foreground)] outline-none transition-colors duration-300 placeholder:text-[var(--muted)] focus:border-[var(--accent)]"
+                    className="w-full resize-none border-b border-[var(--border)] bg-transparent px-0 py-3 text-sm leading-6 text-[var(--foreground)] outline-none placeholder:text-[var(--muted)] focus:border-[var(--accent)]"
                   />
                 </div>
               </div>
