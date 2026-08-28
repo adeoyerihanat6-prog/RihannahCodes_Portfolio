@@ -24,6 +24,9 @@ function AboutPreview() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="grid gap-12 lg:grid-cols-[1.25fr_0.75fr] lg:gap-20"
         >
+          <p className="whitespace-nowrap font-serif text-[clamp(2.5rem,9.5vw,22rem)] leading-none tracking-[-0.05em] text-[var(--surface)] transition-opacity duration-700 hover:opacity-80">
+              RihannahCodes
+            </p>
           <div>
             <p className="mb-6 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--accent-light)]">
               A little about me

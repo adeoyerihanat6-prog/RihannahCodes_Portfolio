@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import PROJECTS_DATA from "../data/projects";
 
 function Work() {
@@ -11,7 +12,6 @@ function Work() {
       className="px-5 py-20 sm:px-8 lg:px-12 lg:py-28"
     >
       <div className="mx-auto max-w-7xl">
-        {/* Section heading */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -35,8 +35,7 @@ function Work() {
           </p>
         </motion.div>
 
-        {/* Featured projects */}
-        <div className="space-y-6">
+        <div className="space-y-16">
           {featuredProjects.map((project, index) => (
             <motion.article
               key={project.id}
@@ -47,7 +46,7 @@ function Work() {
                 duration: 0.7,
                 delay: index * 0.1,
               }}
-              className="group border-t border-[var(--border)] pt-6"
+              className="group"
             >
               <div className="grid gap-8 lg:grid-cols-[1fr_1.1fr] lg:items-center">
                 {/* Project information */}
@@ -64,7 +63,6 @@ function Work() {
                     {project.description}
                   </p>
 
-                  {/* Technologies */}
                   <div className="mt-5 flex flex-wrap gap-x-3 gap-y-2">
                     {project.technologies.slice(0, 5).map((tech) => (
                       <span
@@ -76,7 +74,6 @@ function Work() {
                     ))}
                   </div>
 
-                  {/* Links */}
                   <div className="mt-6 flex items-center gap-5">
                     <a
                       href={project.demoUrl}
@@ -104,7 +101,7 @@ function Work() {
                   </div>
                 </div>
 
-                {/* Image */}
+                {/* Project image */}
                 <motion.a
                   href={project.demoUrl}
                   target="_blank"
@@ -128,62 +125,27 @@ function Work() {
           ))}
         </div>
 
-        {/* Remaining projects */}
-        {PROJECTS_DATA.length > 3 && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="mt-20 border-t border-[var(--border)]"
+        {/* View all projects */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mt-20 flex justify-center"
+        >
+          <Link
+            to="/projects"
+            className="group inline-flex items-center gap-3 border border-[var(--border)] px-7 py-4 text-sm font-semibold text-[var(--foreground)] transition-all duration-300 hover:-translate-y-1 hover:border-[var(--accent)] hover:bg-[var(--surface)]"
           >
-            <div className="flex items-center justify-between py-6">
-              <div>
-                <p className="text-xs uppercase tracking-[0.2em] text-[var(--muted)]">
-                  More work
-                </p>
+            View all projects
 
-                <p className="mt-2 text-sm text-[var(--muted)]">
-                  Other things I've built along the way.
-                </p>
-              </div>
-
-              <span className="text-xs text-[var(--muted)]">
-                {PROJECTS_DATA.length - 3} projects
-              </span>
-            </div>
-
-            <div className="divide-y divide-[var(--border)] border-b border-[var(--border)]">
-              {PROJECTS_DATA.slice(3).map((project) => (
-                <motion.a
-                  key={project.id}
-                  href={project.demoUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  whileHover={{ x: 6 }}
-                  transition={{ duration: 0.25 }}
-                  className="group flex items-center justify-between py-5"
-                >
-                  <div>
-                    <h3 className="text-sm font-medium text-[var(--foreground)]">
-                      {project.title}
-                    </h3>
-
-                    <p className="mt-1 text-xs text-[var(--muted)]">
-                      {project.category}
-                    </p>
-                  </div>
-
-                  <ArrowUpRight
-                    size={17}
-                    strokeWidth={1.6}
-                    className="text-[var(--muted)] transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[var(--foreground)]"
-                  />
-                </motion.a>
-              ))}
-            </div>
-          </motion.div>
-        )}
+            <ArrowUpRight
+              size={17}
+              strokeWidth={1.7}
+              className="transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
+            />
+          </Link>
+        </motion.div>
       </div>
     </section>
   );

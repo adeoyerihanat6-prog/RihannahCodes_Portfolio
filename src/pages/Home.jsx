@@ -3,7 +3,7 @@ import { ArrowDown, ArrowUpRight, Sparkles, Terminal } from "lucide-react";
 import Work from "../components/Work";
 import AboutPreview from "../components/AboutPreview";
 import Contact from "../components/Contact";
-
+import Footer from "../components/Footer";
 function Home() {
   return (
     <main className="relative overflow-hidden bg-[var(--background)]">
@@ -107,6 +107,7 @@ function Home() {
       <AboutPreview />
       
       <Contact/>
+      <Footer />
     </main>
   );
 }
