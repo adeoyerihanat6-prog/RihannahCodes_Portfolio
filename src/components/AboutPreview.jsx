@@ -1,13 +1,20 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const stack = [
-  "React",
-  "JavaScript",
-  "Node.js",
-  "Express",
-  "MongoDB",
-  "Tailwind CSS",
+  {
+    category: "Frontend",
+    technologies: ["React", "JavaScript", "Tailwind CSS", "Framer Motion"],
+  },
+  {
+    category: "Backend",
+    technologies: ["Node.js", "Express", "MongoDB"],
+  },
+  {
+    category: "Tools",
+    technologies: ["Git", "GitHub", "Postman", "Vercel", "Render"],
+  },
 ];
 
 function AboutPreview() {
@@ -21,12 +28,18 @@ function AboutPreview() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.25 }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          transition={{
+            duration: 0.8,
+            ease: [0.22, 1, 0.36, 1],
+          }}
           className="grid gap-12 lg:grid-cols-[1.25fr_0.75fr] lg:gap-20"
         >
+          {/* Brand statement */}
           <p className="whitespace-nowrap font-serif text-[clamp(2.5rem,9.5vw,22rem)] leading-none tracking-[-0.05em] text-[var(--surface)] transition-opacity duration-700 hover:opacity-80">
-              RihannahCodes
-            </p>
+            RihannahCodes
+          </p>
+
+          {/* About content */}
           <div>
             <p className="mb-6 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--accent-light)]">
               A little about me
@@ -47,51 +60,66 @@ function AboutPreview() {
             </p>
 
             <p className="mt-5 max-w-2xl text-base leading-7 text-[var(--muted)]">
-              I'm especially interested in the details — how something
-              feels to navigate, how the interface responds, and how the
-              code behind it holds everything together.
+              I'm especially interested in the details, how something feels
+              to navigate, how the interface responds, and how the code
+              behind it holds everything together.
             </p>
 
-            <a
-              href="/about"
+            <Link
+              to="/about"
               className="group mt-9 inline-flex items-center gap-2 text-sm font-semibold text-[var(--foreground)]"
             >
               Get to know me
+
               <ArrowUpRight
                 size={16}
                 strokeWidth={1.7}
                 className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
               />
-            </a>
+            </Link>
           </div>
 
+          {/* Current focus + Stack */}
           <div className="flex flex-col justify-end lg:pb-2">
+            {/* Right now */}
             <div className="mb-10">
               <p className="mb-3 text-xs uppercase tracking-[0.18em] text-[var(--muted)]">
                 Right now
               </p>
 
               <p className="text-lg leading-7 text-[var(--foreground)]">
-                Learning, building, experimenting,
-                and finding better ways to solve problems.
+                Learning, building, experimenting, and finding better ways to
+                solve problems.
               </p>
             </div>
 
+            {/* Tech stack */}
             <div>
-              <p className="mb-4 text-xs uppercase tracking-[0.18em] text-[var(--muted)]">
+              <p className="mb-5 text-xs uppercase tracking-[0.18em] text-[var(--muted)]">
                 Tools I work with
               </p>
 
-              <div className="flex flex-wrap gap-x-3 gap-y-2">
-                {stack.map((technology) => (
-                  <span
-                    key={technology}
-                    className="rounded-full border border-[var(--border)] px-3 py-1.5 text-xs text-[var(--foreground)] transition-colors duration-300 hover:border-[var(--accent)]"
-                  >
-                    {technology}
-                  </span>
-                ))}
-              </div>
+              {stack.map(({ category, technologies }) => (
+                <div
+                  key={category}
+                  className="mb-5 last:mb-0"
+                >
+                  <p className="mb-3 text-xs font-medium text-[var(--muted)]">
+                    {category}
+                  </p>
+
+                  <div className="flex flex-wrap gap-2">
+                    {technologies.map((technology) => (
+                      <span
+                        key={technology}
+                        className="rounded-full border border-[var(--border)] px-3 py-1.5 text-xs text-[var(--foreground)] transition-colors duration-300 hover:border-[var(--accent)]"
+                      >
+                        {technology}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </motion.div>
@@ -100,4 +128,4 @@ function AboutPreview() {
   );
 }
 
-export default AboutPreview;   
+export default AboutPreview;
