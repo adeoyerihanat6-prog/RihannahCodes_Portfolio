@@ -1,3 +1,4 @@
+
 import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowUpRight,
@@ -7,32 +8,29 @@ import {
   Menu,
   X,
 } from "lucide-react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-
 import rcLogo from "../assets/branding/rc-logo.png";
 
 const navLinks = [
   {
     label: "Work",
-    path: "/#work",
+    path: "/project",
     icon: BriefcaseBusiness,
   },
   {
     label: "About",
-    path: "/#about",
+    path: "/about",
     icon: CircleUserRound,
-  },
-  {
-    label: "Contact",
-    path: "/#contact",
-    icon: Mail,
   },
 ];
 
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,7 +39,9 @@ function Navbar() {
 
     window.addEventListener("scroll", handleScroll);
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   useEffect(() => {
@@ -54,6 +54,26 @@ function Navbar() {
 
   const closeMenu = () => {
     setMenuOpen(false);
+  };
+
+  const goToContact = () => {
+    closeMenu();
+
+    if (location.pathname !== "/") {
+      navigate("/");
+
+      setTimeout(() => {
+        document.getElementById("contact")?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }, 100);
+    } else {
+      document.getElementById("contact")?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
   };
 
   return (
@@ -83,7 +103,7 @@ function Navbar() {
           }`}
         >
           {/* Logo */}
-          <NavLink
+          <Link
             to="/"
             aria-label="RihannahCodes home"
             className="relative z-10 flex shrink-0 items-center"
@@ -93,9 +113,9 @@ function Navbar() {
               alt="RihannahCodes"
               className="h-10 w-auto object-contain sm:h-11"
             />
-          </NavLink>
+          </Link>
 
-          {/* Desktop navigation */}
+          {/* Desktop Navigation */}
           <div className="hidden items-center md:flex">
             <div className="flex items-center gap-7 lg:gap-9">
               {navLinks.map((link) => (
@@ -109,12 +129,25 @@ function Navbar() {
                   <span className="absolute bottom-0 left-0 h-px w-0 bg-[var(--accent)] transition-all duration-300 group-hover:w-full" />
                 </NavLink>
               ))}
+
+              {/* Contact */}
+              <button
+                type="button"
+                onClick={goToContact}
+                className="group relative flex items-center gap-1.5 py-2 text-sm font-medium text-[var(--muted)] transition-colors duration-300 hover:text-[var(--foreground)]"
+              >
+                Contact
+
+                <span className="absolute bottom-0 left-0 h-px w-0 bg-[var(--accent)] transition-all duration-300 group-hover:w-full" />
+              </button>
             </div>
 
             <div className="ml-9 h-5 w-px bg-[var(--border)]" />
 
-            <a
-              href="#contact"
+            {/* Let's Talk */}
+            <button
+              type="button"
+              onClick={goToContact}
               className="group ml-7 flex items-center gap-1.5 text-sm font-medium text-[var(--foreground)] transition-colors duration-300 hover:text-[var(--accent-light)]"
             >
               Let's talk
@@ -124,10 +157,10 @@ function Navbar() {
                 strokeWidth={1.8}
                 className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
               />
-            </a>
+            </button>
           </div>
 
-          {/* Mobile menu button */}
+          {/* Mobile Menu Button */}
           <button
             type="button"
             onClick={() => setMenuOpen(true)}
@@ -140,7 +173,7 @@ function Navbar() {
         </motion.nav>
       </motion.header>
 
-      {/* Mobile side navigation */}
+      {/* Mobile Navigation */}
       <AnimatePresence>
         {menuOpen && (
           <>
@@ -156,7 +189,7 @@ function Navbar() {
               className="fixed inset-0 z-[60] bg-black/40 backdrop-blur-sm md:hidden"
             />
 
-            {/* Side panel */}
+            {/* Side Panel */}
             <motion.aside
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
@@ -167,9 +200,9 @@ function Navbar() {
               }}
               className="fixed right-0 top-0 z-[70] flex h-dvh w-[88%] max-w-sm flex-col border-l border-[var(--border)] bg-[var(--surface)] px-6 py-6 md:hidden"
             >
-              {/* Panel header */}
+              {/* Panel Header */}
               <div className="flex items-center justify-between">
-                <NavLink
+                <Link
                   to="/"
                   onClick={closeMenu}
                   aria-label="RihannahCodes home"
@@ -179,7 +212,7 @@ function Navbar() {
                     alt="RihannahCodes"
                     className="h-10 w-auto object-contain"
                   />
-                </NavLink>
+                </Link>
 
                 <button
                   type="button"
@@ -238,25 +271,61 @@ function Navbar() {
                       </motion.div>
                     );
                   })}
+
+                  {/* Mobile Contact */}
+                  <motion.button
+                    type="button"
+                    onClick={goToContact}
+                    initial={{ opacity: 0, x: 25 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{
+                      delay: 0.35,
+                      duration: 0.4,
+                      ease: [0.22, 1, 0.36, 1],
+                    }}
+                    className="group flex w-full items-center justify-between border-b border-[var(--border)] py-5 text-left"
+                  >
+                    <span className="flex items-center gap-4">
+                      <Mail
+                        size={19}
+                        strokeWidth={1.5}
+                        className="text-[var(--muted)] transition-colors duration-300 group-hover:text-[var(--accent)]"
+                      />
+
+                      <span className="font-serif text-3xl text-[var(--foreground)]">
+                        Contact
+                      </span>
+                    </span>
+
+                    <ArrowUpRight
+                      size={18}
+                      strokeWidth={1.6}
+                      className="text-[var(--muted)] transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[var(--accent)]"
+                    />
+                  </motion.button>
                 </div>
               </div>
 
               {/* Mobile CTA */}
-              <motion.a
-                href="#contact"
-                onClick={closeMenu}
+              <motion.button
+                type="button"
+                onClick={goToContact}
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
                   delay: 0.5,
                   duration: 0.4,
                 }}
-                className="mt-auto flex items-center justify-between border border-[var(--border)] px-5 py-4 text-sm font-medium text-[var(--foreground)] transition-colors duration-300 hover:border-[var(--accent)] hover:bg-[var(--background)]"
+                className="group mt-auto flex w-full items-center justify-between border border-[var(--border)] px-5 py-4 text-left text-sm font-medium text-[var(--foreground)] transition-colors duration-300 hover:border-[var(--accent)] hover:bg-[var(--background)]"
               >
                 Let's talk
 
-                <ArrowUpRight size={17} strokeWidth={1.7} />
-              </motion.a>
+                <ArrowUpRight
+                  size={17}
+                  strokeWidth={1.7}
+                  className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                />
+              </motion.button>
             </motion.aside>
           </>
         )}

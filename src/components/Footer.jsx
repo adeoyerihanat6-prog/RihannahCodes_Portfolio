@@ -12,7 +12,7 @@ const SOCIAL_LINKS = [
   },
   {
     label: "X",
-    href: "https://x.com/riha66076",
+    href: "https://x.com/RihannahCodes",
   },
   {
     label: "Email",

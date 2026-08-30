@@ -1,49 +1,37 @@
-import { useState, useRef } from "react";
+import { useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Mail, MessageCircle } from "lucide-react";
+import { ArrowUpRight, Mail } from "lucide-react";
 import emailjs from "@emailjs/browser";
 
 const CONTACT_HANDLES = [
-  {
-    id: "email",
-    label: "Email",
-    value: "adeoyerihanat6@gmail.com",
-    href: "mailto:adeoyerihanat6@gmail.com",
-    icon: Mail,
-  },
   {
     id: "whatsapp",
     label: "WhatsApp",
     value: "Chat with me",
     href: "https://wa.me/2349015162388",
-    icon: MessageCircle,
   },
   {
     id: "github",
     label: "GitHub",
     value: "adeoyerihanat6-prog",
     href: "https://github.com/adeoyerihanat6-prog",
-    icon: null,
   },
   {
     id: "linkedin",
     label: "LinkedIn",
     value: "Rihanat Adeoye",
     href: "https://www.linkedin.com/in/rihanat-adeoye-2a5059395",
-    icon: null,
   },
   {
     id: "twitter",
     label: "X / Twitter",
     value: "@RihannahCodes",
     href: "https://x.com/RihannahCodes",
-    icon: null,
   },
 ];
 
 function Contact() {
   const formRef = useRef(null);
-
   const [isSending, setIsSending] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
 
@@ -75,49 +63,60 @@ function Contact() {
   return (
     <section
       id="contact"
-      className="px-5 py-20 sm:px-8 lg:px-12 lg:py-28"
+      className="px-5 py-24 sm:px-8 lg:px-12 lg:py-32"
     >
       <div className="mx-auto max-w-7xl">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{
             duration: 0.8,
             ease: [0.22, 1, 0.36, 1],
           }}
-          className="grid gap-14 lg:grid-cols-[0.85fr_1.15fr] lg:gap-24"
+          className="grid gap-16 lg:grid-cols-[0.9fr_1.1fr] lg:gap-24"
         >
           {/* Intro */}
           <div className="flex flex-col justify-between">
             <div>
-              <p className="mb-6 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--accent-light)]">
+              <p className="mb-5 text-xs font-semibold uppercase tracking-[0.25em] text-[var(--accent-light)]">
                 Get in touch
               </p>
 
               <h2 className="max-w-xl font-serif text-5xl leading-[0.98] tracking-[-0.04em] text-[var(--foreground)] sm:text-6xl lg:text-7xl">
-                Have something
-                <span className="italic text-[var(--muted)]">
-                  {" "}
-                  worth building?
+                Let's build
+                <span className="block italic text-[var(--muted)]">
+                  something good.
                 </span>
               </h2>
 
-              <p className="mt-7 max-w-md text-base leading-7 text-[var(--muted)]">
-                I'm open to opportunities, collaborations, and interesting
-                ideas. If you think we could build something worthwhile,
-                I'd love to hear from you.
+              <p className="mt-7 max-w-md text-sm leading-7 text-[var(--muted)] sm:text-base">
+                Have a project in mind, an opportunity to discuss, or
+                something interesting you think I should see? Send me a
+                message.
               </p>
             </div>
 
-            {/* Social links */}
-            <div className="mt-12 lg:mt-20">
-              <p className="mb-5 text-xs uppercase tracking-[0.18em] text-[var(--muted)]">
-                Find me online
-              </p>
+            {/* Contact details */}
+            <div className="mt-14 lg:mt-24">
+              <a
+                href="mailto:adeoyerihanat6@gmail.com"
+                className="group flex w-fit items-center gap-2 text-sm text-[var(--muted)] transition-colors duration-300 hover:text-[var(--foreground)]"
+              >
+                <Mail size={16} strokeWidth={1.6} />
 
-              <div className="flex flex-wrap gap-x-7 gap-y-4">
-                {CONTACT_HANDLES.slice(1).map((handle) => (
+                <span>adeoyerihanat6@gmail.com</span>
+
+                <ArrowUpRight
+                  size={14}
+                  strokeWidth={1.7}
+                  className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                />
+              </a>
+
+              {/* Social links */}
+              <div className="mt-8 flex flex-wrap gap-x-7 gap-y-4">
+                {CONTACT_HANDLES.map((handle) => (
                   <a
                     key={handle.id}
                     href={handle.href}
@@ -125,7 +124,7 @@ function Contact() {
                     rel="noreferrer"
                     className="group flex items-center gap-1.5 text-sm text-[var(--muted)] transition-colors duration-300 hover:text-[var(--foreground)]"
                   >
-                    <span>{handle.label}</span>
+                    {handle.label}
 
                     <ArrowUpRight
                       size={13}
@@ -150,11 +149,12 @@ function Contact() {
             className="rounded-3xl bg-[var(--surface)] p-6 sm:p-8 lg:p-10"
           >
             <form ref={formRef} onSubmit={handleSubmit}>
-              <div className="space-y-7">
+              <div className="space-y-8">
+                {/* Name */}
                 <div>
                   <label
                     htmlFor="from_name"
-                    className="mb-2 block text-xs uppercase tracking-[0.16em] text-[var(--muted)]"
+                    className="mb-2 block text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--muted)]"
                   >
                     Name
                   </label>
@@ -165,14 +165,15 @@ function Contact() {
                     name="from_name"
                     required
                     placeholder="Your name"
-                    className="w-full border-b border-[var(--border)] bg-transparent px-0 py-3 text-sm text-[var(--foreground)] outline-none placeholder:text-[var(--muted)] focus:border-[var(--accent)]"
+                    className="w-full border-b border-[var(--border)] bg-transparent px-0 py-3 text-sm text-[var(--foreground)] outline-none placeholder:text-[var(--muted)] focus:border-[var(--foreground)]"
                   />
                 </div>
 
+                {/* Email */}
                 <div>
                   <label
                     htmlFor="reply_to"
-                    className="mb-2 block text-xs uppercase tracking-[0.16em] text-[var(--muted)]"
+                    className="mb-2 block text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--muted)]"
                   >
                     Email
                   </label>
@@ -183,14 +184,15 @@ function Contact() {
                     name="reply_to"
                     required
                     placeholder="you@example.com"
-                    className="w-full border-b border-[var(--border)] bg-transparent px-0 py-3 text-sm text-[var(--foreground)] outline-none placeholder:text-[var(--muted)] focus:border-[var(--accent)]"
+                    className="w-full border-b border-[var(--border)] bg-transparent px-0 py-3 text-sm text-[var(--foreground)] outline-none placeholder:text-[var(--muted)] focus:border-[var(--foreground)]"
                   />
                 </div>
 
+                {/* Message */}
                 <div>
                   <label
                     htmlFor="message"
-                    className="mb-2 block text-xs uppercase tracking-[0.16em] text-[var(--muted)]"
+                    className="mb-2 block text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--muted)]"
                   >
                     Message
                   </label>
@@ -198,27 +200,29 @@ function Contact() {
                   <textarea
                     id="message"
                     name="message"
-                    rows="5"
+                    rows="6"
                     required
                     placeholder="Tell me a little about what you're building..."
-                    className="w-full resize-none border-b border-[var(--border)] bg-transparent px-0 py-3 text-sm leading-6 text-[var(--foreground)] outline-none placeholder:text-[var(--muted)] focus:border-[var(--accent)]"
+                    className="w-full resize-none border-b border-[var(--border)] bg-transparent px-0 py-3 text-sm leading-6 text-[var(--foreground)] outline-none placeholder:text-[var(--muted)] focus:border-[var(--foreground)]"
                   />
                 </div>
               </div>
 
+              {/* Status */}
               {submitStatus === "success" && (
-                <p className="mt-5 text-sm text-[var(--accent-light)]">
+                <p className="mt-6 text-sm text-[var(--accent-light)]">
                   Message sent successfully. I'll get back to you soon.
                 </p>
               )}
 
               {submitStatus === "error" && (
-                <p className="mt-5 text-sm text-red-400">
+                <p className="mt-6 text-sm text-red-400">
                   Something went wrong. Please try again or contact me
                   directly.
                 </p>
               )}
 
+              {/* Submit */}
               <button
                 type="submit"
                 disabled={isSending}
@@ -237,26 +241,6 @@ function Contact() {
             </form>
           </motion.div>
         </motion.div>
-
-        {/* Email */}
-        <motion.a
-          href="mailto:adeoyerihanat6@gmail.com"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="group mt-16 flex w-fit items-center gap-2 text-sm text-[var(--muted)] transition-colors duration-300 hover:text-[var(--foreground)]"
-        >
-          <Mail size={15} strokeWidth={1.7} />
-
-          <span>adeoyerihanat6@gmail.com</span>
-
-          <ArrowUpRight
-            size={14}
-            strokeWidth={1.7}
-            className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-          />
-        </motion.a>
       </div>
     </section>
   );

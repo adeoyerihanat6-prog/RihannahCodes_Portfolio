@@ -62,8 +62,7 @@ function Home() {
 
                 <a
                   href="#contact"
-                  className="group inline-flex items-center gap-3 border border-[var(--muted)]/40 px-6 py-3.5 text-sm font-semibold text-[var(--foreground)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#747A45] hover:bg-[var(--accent)]/5"
-                >
+                  className="group inline-flex items-center gap-3 border border-[var(--muted)]/40 px-6 py-3.5 text-sm font-semibold text-[var(--foreground)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#747A45] hover:bg-[var(--accent)]/5">
                   <span>Let's talk</span>
                   <ArrowUpRight
                     size={16}
