@@ -5,7 +5,7 @@ import quiz from "../assets/projects/quizappscreenshot.png";
 import quote from "../assets/projects/quote.png";
 import decode from "../assets/projects/decode.png";
 import vel from "../assets/projects/vel.png";
-
+import cyber from "../assets/projects/cyber.png";
 const PROJECTS_DATA = [
   {
     id: "velora",
@@ -61,6 +61,24 @@ const PROJECTS_DATA = [
     ],
     demoUrl: "https://adeoyerihanat6-prog.github.io/ticket/",
     githubUrl: "https://github.com/adeoyerihanat6-prog/ticket",
+  },
+
+  {
+    id: "cyber diary",
+    title: "Cyber Diary",
+    category: "Frontend",
+    image: cyber,
+    description:
+      "A personal digital diary that blends storytelling, memories, and interactive experiences into one immersive web space.",
+    technologies: [
+      "React",
+      "Tailwind CSS",
+      "JavaScript",
+      "Framer Motion",
+      "React Router",
+    ],
+    demoUrl: "https://cyberdiary.vercel.app",
+    githubUrl: "https://github.com/adeoyerihanat6-prog/Cyber_Diary",
   },
 
   {
