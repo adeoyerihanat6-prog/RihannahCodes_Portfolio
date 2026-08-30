@@ -15,7 +15,7 @@ import rcLogo from "../assets/branding/rc-logo.png";
 const navLinks = [
   {
     label: "Work",
-    path: "/project",
+    path: "/projects",
     icon: BriefcaseBusiness,
   },
   {
