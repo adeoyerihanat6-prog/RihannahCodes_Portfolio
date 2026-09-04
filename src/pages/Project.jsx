@@ -19,7 +19,7 @@ function Project() {
           className="max-w-3xl"
         >
           <Link
-            to="/"
+            to="/#work"
             className="group mb-10 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.15em] text-[var(--muted)] transition-colors duration-300 hover:text-[var(--foreground)]"
           >
             <ArrowLeft
@@ -172,7 +172,7 @@ function Project() {
           </div>
 
           <Link
-            to="/"
+            to="/#work"
             className="group inline-flex items-center gap-3 border border-[var(--border)] px-6 py-3.5 text-xs font-semibold uppercase tracking-[0.12em] text-[var(--foreground)] transition-all duration-300 hover:-translate-y-1 hover:border-[var(--accent)] hover:bg-[var(--surface)]"
           >
             Back to home
