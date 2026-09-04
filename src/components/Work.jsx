@@ -96,16 +96,16 @@ function Work() {
                   </p>
 
                   {/* Technologies */}
-                  <div className="mt-5 flex flex-wrap gap-x-3 gap-y-2">
-                    {project.technologies.slice(0, 5).map((tech) => (
-                      <span
-                        key={tech}
-                        className="text-[10px] uppercase tracking-[0.12em] text-[var(--muted)]"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
+                   <div className="mt-7 flex flex-wrap gap-2">
+  {project.technologies.map((technology) => (
+    <span
+      key={technology}
+      className="rounded-full border border-[var(--border)] px-3 py-1.5 text-[9px] font-medium tracking-[0.08em] text-[var(--muted)] transition-all duration-300 hover:border-[var(--muted)] hover:text-[var(--foreground)]"
+    >
+      {technology}
+    </span>
+  ))}
+</div>
 
                   {/* Links */}
                   <div className="mt-6 flex items-center gap-5">

@@ -46,7 +46,7 @@ const PROJECTS_DATA = [
     githubUrl:
       "https://github.com/adeoyerihanat6-prog/Enny-s_Portfolio",
   },
-  {
+ {
   id: "booksite",
   title: "Booksite",
   category: "Frontend",
@@ -61,8 +61,7 @@ const PROJECTS_DATA = [
     "Lucide React",
   ],
   demoUrl: "https://booksite-rihannah.vercel.app",
-  githubUrl:
-    "https://github.com/adeoyerihanat6-prog/Booksite",
+  githubUrl: "https://github.com/adeoyerihanat6-prog/Booksite",
 },
 
   {

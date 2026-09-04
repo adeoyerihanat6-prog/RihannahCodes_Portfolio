@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
+
 import PROJECTS_DATA from "../data/projects";
 
 function Project() {
@@ -63,7 +64,9 @@ function Project() {
             >
               <div
                 className={`grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-16 ${
-                  index % 2 !== 0 ? "lg:[&>*:first-child]:order-2" : ""
+                  index % 2 !== 0
+                    ? "lg:[&>*:first-child]:order-2"
+                    : ""
                 }`}
               >
                 {/* Image */}
@@ -101,16 +104,16 @@ function Project() {
                   </p>
 
                   {/* Technologies */}
-                  <div className="mt-6 flex flex-wrap gap-x-4 gap-y-2">
-                    {project.technologies.map((technology) => (
-                      <span
-                        key={technology}
-                        className="text-[10px] uppercase tracking-[0.12em] text-[var(--muted)]"
-                      >
-                        {technology}
-                      </span>
-                    ))}
-                  </div>
+                 <div className="mt-7 flex flex-wrap gap-2">
+                  {project.technologies.map((technology) => (
+                    <span
+                      key={technology}
+                      className="rounded-full border border-[var(--border)] px-3 py-1.5 text-[9px] font-medium tracking-[0.08em] text-[var(--muted)] transition-all duration-300 hover:border-[var(--muted)] hover:text-[var(--foreground)]"
+                    >
+                      {technology}
+                    </span>
+                  ))}
+                </div>
 
                   {/* Links */}
                   <div className="mt-8 flex items-center gap-6">

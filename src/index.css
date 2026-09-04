@@ -5,15 +5,11 @@
 :root {
   --background: #121210;
   --surface: #1b1a17;
-
   --foreground: #f3efe7;
   --muted: #9d9991;
-
   --border: #302e2a;
-
   --accent: #747a45;
   --accent-light: #8a9055;
-
   --font-sans: "Manrope", sans-serif;
   --font-serif: "DM Serif Display", serif;
 }
@@ -29,10 +25,8 @@ html {
 body {
   margin: 0;
   min-width: 320px;
-
   background: var(--background);
   color: var(--foreground);
-
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
