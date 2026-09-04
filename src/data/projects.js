@@ -6,6 +6,7 @@ import quote from "../assets/projects/quote.png";
 import decode from "../assets/projects/decode.png";
 import vel from "../assets/projects/vel.png";
 import cyber from "../assets/projects/cyber.png";
+import booksite from "../assets/projects/books.png";
 const PROJECTS_DATA = [
   {
     id: "velora",
@@ -45,6 +46,24 @@ const PROJECTS_DATA = [
     githubUrl:
       "https://github.com/adeoyerihanat6-prog/Enny-s_Portfolio",
   },
+  {
+  id: "booksite",
+  title: "Booksite",
+  category: "Frontend",
+  image: booksite,
+  description:
+    "A modern reading platform designed to make discovering and reading books feel calm, immersive and personal, with mood-based discovery, saved books and persistent reading progress.",
+  technologies: [
+    "React",
+    "Tailwind CSS",
+    "Framer Motion",
+    "React Router",
+    "Lucide React",
+  ],
+  demoUrl: "https://booksite-rihannah.vercel.app",
+  githubUrl:
+    "https://github.com/adeoyerihanat6-prog/Booksite",
+},
 
   {
     id: "techcon",
