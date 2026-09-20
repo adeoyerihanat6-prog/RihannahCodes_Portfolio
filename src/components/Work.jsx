@@ -7,55 +7,45 @@ function Work() {
   const featuredProjects = PROJECTS_DATA.slice(0, 3);
 
   return (
-    <section
-      id="work"
-      className="px-5 py-20 sm:px-8 lg:px-12 lg:py-28"
-    >
+    <section id="work"
+      className="px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
       <div className="mx-auto max-w-7xl">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{
-            duration: 0.7,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-          className="mb-14 flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between lg:mb-20"
-        >
-          <div>
-            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-[var(--accent-light)]">
-              Selected Work
-            </p>
+     
+  <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{duration: 0.7, ease: [0.22, 1, 0.36, 1],}}
+      className="mb-14 flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between lg:mb-20">
+    
+    <div>
+      <p className="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-[var(--accent-light)]">
+        Selected Work
+      </p>
 
-            <h2 className="font-serif text-5xl leading-none tracking-[-0.035em] text-[var(--foreground)] sm:text-6xl lg:text-7xl">
-              Things I've built.
-            </h2>
-          </div>
+      <h2 className="font-serif text-5xl leading-none tracking-[-0.035em] text-[var(--foreground)] sm:text-6xl lg:text-7xl">
+        Things I've built.
+      </h2>
+    </div>
 
-          <p className="max-w-xs text-sm leading-6 text-[var(--muted)]">
-            A selection of projects I've designed, developed, and brought
-            to life across the web.
-          </p>
-        </motion.div>
+    <p className="max-w-xs text-sm leading-6 text-[var(--muted)]">
+      A selection of projects I've designed, developed, and brought
+      to life across the web.
+    </p>
+  </motion.div>
 
-        {/* Projects */}
-        <div className="space-y-20 lg:space-y-28">
-          {featuredProjects.map((project, index) => (
-            <motion.article
-              key={project.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.15 }}
-              transition={{
-                duration: 0.7,
-                delay: index * 0.08,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="group"
-            >
-              <div className="grid gap-8 lg:grid-cols-[0.8fr_1fr] lg:items-center lg:gap-14">
-                {/* Project image */}
+       
+  <div className="space-y-20 lg:space-y-28">
+    {featuredProjects.map((project, index) => (
+      <motion.article
+        key={project.id}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.15 }}
+        transition={{ duration: 0.7, delay: index * 0.08, ease: [0.22, 1, 0.36, 1],}}
+        className="group">
+          <div className="grid gap-8 lg:grid-cols-[0.8fr_1fr] lg:items-center lg:gap-14">
+               
                 <motion.a
                   href={project.demoUrl}
                   target="_blank"
@@ -77,7 +67,7 @@ function Work() {
                   <div className="pointer-events-none absolute inset-0 bg-black/0 transition-colors duration-500 group-hover:bg-black/5" />
                 </motion.a>
 
-                {/* Project information */}
+                
                 <div
                   className={`order-2 ${
                     index % 2 !== 0 ? "lg:order-2" : "lg:order-1"
@@ -95,7 +85,6 @@ function Work() {
                     {project.description}
                   </p>
 
-                  {/* Technologies */}
                    <div className="mt-7 flex flex-wrap gap-2">
   {project.technologies.map((technology) => (
     <span
@@ -107,8 +96,8 @@ function Work() {
   ))}
 </div>
 
-                  {/* Links */}
-                  <div className="mt-6 flex items-center gap-5">
+                 
+        <div className="mt-6 flex items-center gap-5">
                     <a
                       href={project.demoUrl}
                       target="_blank"

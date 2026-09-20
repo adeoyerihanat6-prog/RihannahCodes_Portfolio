@@ -76,7 +76,6 @@ function Contact() {
           }}
           className="grid gap-16 lg:grid-cols-[0.9fr_1.1fr] lg:gap-24"
         >
-          {/* Intro */}
           <div className="flex flex-col justify-between">
             <div>
               <p className="mb-5 text-xs font-semibold uppercase tracking-[0.25em] text-[var(--accent-light)]">
@@ -97,7 +96,7 @@ function Contact() {
               </p>
             </div>
 
-            {/* Contact details */}
+            
             <div className="mt-14 lg:mt-24">
               <a
                 href="mailto:adeoyerihanat6@gmail.com"
@@ -114,7 +113,7 @@ function Contact() {
                 />
               </a>
 
-              {/* Social links */}
+              
               <div className="mt-8 flex flex-wrap gap-x-7 gap-y-4">
                 {CONTACT_HANDLES.map((handle) => (
                   <a
@@ -137,7 +136,7 @@ function Contact() {
             </div>
           </div>
 
-          {/* Contact form */}
+          
           <motion.div
             initial={{ opacity: 0, x: 25 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -150,7 +149,7 @@ function Contact() {
           >
             <form ref={formRef} onSubmit={handleSubmit}>
               <div className="space-y-8">
-                {/* Name */}
+               
                 <div>
                   <label
                     htmlFor="from_name"
@@ -169,7 +168,7 @@ function Contact() {
                   />
                 </div>
 
-                {/* Email */}
+                
                 <div>
                   <label
                     htmlFor="reply_to"
@@ -188,7 +187,7 @@ function Contact() {
                   />
                 </div>
 
-                {/* Message */}
+                
                 <div>
                   <label
                     htmlFor="message"
@@ -208,7 +207,7 @@ function Contact() {
                 </div>
               </div>
 
-              {/* Status */}
+            
               {submitStatus === "success" && (
                 <p className="mt-6 text-sm text-[var(--accent-light)]">
                   Message sent successfully. I'll get back to you soon.
@@ -222,7 +221,6 @@ function Contact() {
                 </p>
               )}
 
-              {/* Submit */}
               <button
                 type="submit"
                 disabled={isSending}

@@ -30,12 +30,12 @@ function Footer() {
 
   return (
     <footer className="relative overflow-hidden px-5 pb-10 pt-20 sm:px-8 lg:px-12 lg:pt-28 bg-[var(--background)]">
-      {/* Subtle ambient background glow */}
+     
       <div className="absolute left-1/2 top-1/3 -z-10 h-[350px] w-[350px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--accent)] opacity-5 blur-[120px] pointer-events-none" />
 
       <div className="mx-auto max-w-7xl relative z-10">
         
-        {/* Small identity */}
+       
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -49,7 +49,7 @@ function Footer() {
           </span>
         </motion.div>
 
-        {/* Refined closing statement */}
+       
         <motion.div
           initial={{ opacity: 0, y: 35 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -73,7 +73,7 @@ function Footer() {
           </h2>
         </motion.div>
 
-        {/* Social Links Matrix & Availability Badge */}
+   
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -101,14 +101,14 @@ function Footer() {
                     strokeWidth={2}
                     className="opacity-40 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:opacity-100"
                   />
-                  {/* Creative animated underline effect */}
+                 
                   <span className="absolute -bottom-1 left-0 h-[1px] w-0 bg-[var(--accent)] transition-all duration-300 group-hover:w-full" />
                 </a>
               ))}
             </div>
           </div>
 
-          {/* Availability Badge */}
+         
           <div className="flex items-center gap-2.5 rounded-full border border-[var(--border)] bg-[var(--surface)]/50 px-4 py-2 w-fit backdrop-blur-sm">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -120,7 +120,7 @@ function Footer() {
           </div>
         </motion.div>
 
-        {/* Scaled Background Brand Mark & Bottom Control Bar */}
+        
         <div className="relative mt-16 sm:mt-24 overflow-hidden text-center select-none pt-10">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -134,7 +134,6 @@ function Footer() {
             </p>
           </motion.div>
 
-          {/* Bottom details & Back to top perfectly structured underneath */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -144,7 +143,7 @@ function Footer() {
           >
             <p>© {new Date().getFullYear()} Adeoye Rihanat. All rights reserved.</p>
 
-            {/* Back to top button  */}
+           
             <button
               type="button"
               onClick={scrollTop}

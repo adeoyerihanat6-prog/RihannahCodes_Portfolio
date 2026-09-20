@@ -5,11 +5,11 @@ import { Link } from "react-router-dom";
 const stack = [
   {
     category: "Frontend",
-    technologies: ["React", "JavaScript", "Tailwind CSS", "Framer Motion"],
+    technologies: ["React", "JavaScript", "Tailwind CSS", "Framer Motion", "TypeScript", "HTML", "CSS"],
   },
   {
     category: "Backend",
-    technologies: ["Node.js", "Express", "MongoDB"],
+    technologies: ["Node.js", "Express", "MongoDB", "Supabase", "REST APIs", "JWT Authentication"],
   },
   {
     category: "Tools",
@@ -31,18 +31,17 @@ function AboutPreview() {
           transition={{
             duration: 0.8,
             ease: [0.22, 1, 0.36, 1],
-          }}
-        >
-          {/* Brand statement */}
+          }}>
+         
           <div className="overflow-hidden">
             <p className="font-serif text-[clamp(3.5rem,10vw,9rem)] leading-[0.9] tracking-[-0.06em] text-[var(--surface)] transition-opacity duration-700 hover:opacity-80">
               RihannahCodes
             </p>
           </div>
 
-          {/* Content */}
+          
           <div className="mt-16 grid gap-14 border-t border-[var(--border)] pt-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-24 lg:pt-14">
-            {/* About */}
+           
             <div>
               <p className="mb-6 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--accent-light)]">
                 A little about me
@@ -82,9 +81,9 @@ function AboutPreview() {
               </Link>
             </div>
 
-            {/* Current focus + Stack */}
+            
             <div className="lg:pt-1">
-              {/* Right now */}
+              
               <div className="border-b border-[var(--border)] pb-10">
                 <p className="mb-3 text-xs uppercase tracking-[0.18em] text-[var(--muted)]">
                   Right now
@@ -96,7 +95,7 @@ function AboutPreview() {
                 </p>
               </div>
 
-              {/* Tech stack */}
+              
               <div className="pt-10">
                 <p className="mb-6 text-xs uppercase tracking-[0.18em] text-[var(--muted)]">
                   Tools I work with
